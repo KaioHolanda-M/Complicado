@@ -1,38 +1,34 @@
-document.addEventListener('DOMContentLoaded', () => {
-  
+document.addEventListener("DOMContentLoaded", () => {
   const chatContainer = document.getElementById('chat-container');
-  const massageInput = document.getElementById('message-input');
+  const messageInput = document.getElementById('message-input');
   const sendButton = document.getElementById('send-button');
-  
-  function addMessage(message, isUser) {
-    const messageDiv = document, createElement('div');
-    messageDiv. classList.add('user-message');
-  } else{
-    messageDiv.classlist.add('agent-message');
+
+  function addMessage(messageText, isUser) {
+      const messageElement = document.createElement('div');
+      if (isUser) {
+          messageElement.classList.add('user-message');
+      } else {
+          messageElement.classList.add('agent-message');
+      }
+      messageElement.textContent = messageText;
+      chatContainer.appendChild(messageElement);
+      chatContainer.scrollTop = chatContainer.scrollHeight; // Rolagem para mostrar a última mensagem
   }
-  messageDiv.textContainer = message;
-  chatContainer.appendChild(messageDiv);
-  chatContainer.scrollTop = chatContainer.scrollHeight;
-}
+
   sendButton.addEventListener('click', () => {
-  const messageText = messageInput.value;
-  if (messageText.trim() !== '') {
-    addMessage( messageText, true);
-    
- fetch 1156|dckk1k0KdqX9mscbn0bHo8aV8SA95jWUhga4LB1n366bcbc4(messageText);
-    
-   messageInput.value = '';
-  }
-});
-function 1156|dckk1k0KdqX9mscbn0bHo8aV8SA95jWUhga4LB1n366bcbc4(user message) {
-setTimeout(() => {
-  const responses = [
-    "Olá, como posso te ajudar hoje?"
-    ];
-  const randomIndex = Match.floor(Math.random() * responses.length);
-  const agentReponse = responses[randomIndex];
-  addMessage(agentResponse, false);
-}, 1000);
-}
-addMessage("Olá! Bem vindo! Como posso ajudar?", false);
+      const messageText = messageInput.value;
+      if (messageText.trim() !== '') {
+          addMessage(messageText, true); // Enviando mensagem do usuário
+          messageInput.value = ''; // Limpa o campo de entrada
+          
+          setTimeout(() => {
+              const responses = [
+                  "Olá, como posso te ajudar hoje?",
+                  "Estou aqui para ajudar!",
+              ];
+              const randomIndex = Math.floor(Math.random() * responses.length);
+              addMessage(responses[randomIndex], false); // Resposta do 'agente'
+          }, 1000); // Atraso para simular resposta
+      }
+  });
 });

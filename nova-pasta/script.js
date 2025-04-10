@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (messageText.trim() !== '') {
     addMessage( messageText, true);
     
-  1156|dckk1k0KdqX9mscbn0bHo8aV8SA95jWUhga4LB1n366bcbc4(messageText);
+ fetch 1156|dckk1k0KdqX9mscbn0bHo8aV8SA95jWUhga4LB1n366bcbc4(messageText);
     
    messageInput.value = '';
   }
